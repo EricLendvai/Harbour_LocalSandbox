@@ -1,0 +1,4 @@
+ReloadConfigAtEveryRequest=true                               //"true" or "false"
+MaxRequestPerFCGIProcess=0                                    //0 for Unlimited
+RootURI=/fcgi_harbour_localsandbox/
+HarbourPath=/src/harbour/                                     //Location of Harbour Compiler

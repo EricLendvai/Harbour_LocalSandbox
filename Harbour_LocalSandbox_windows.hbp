@@ -1,0 +1,48 @@
+-hbexe
+
+-trace
+
+#To enabled progressing recompilation uncomment the following line
+#-inc
+
+-workdir=build\win64\${HB_COMPILER}\${BuildMode}\hbmk2\
+
+#To also create a list of all the object files linked uncomment the following line
+#-map
+
+#Temporary solution due to conflict of same definition in Harbour_FastCGI and Harbour_VFP
+#-ldflag=-Wl,--allow-multiple-definition
+#Instead now using the following 2 preprocessor variables, one for .prg files and other for .c files.
+-prgflag=-DUSING_HB_VFP
+-cflag=-DUSING_HB_VFP
+
+#To include the hb_vfp module
+-incpath=${HB_VFP_ROOT}\build\win64\${HB_COMPILER}\${BuildMode}
+#Update the path where the HB_VFP package is installed
+-L${HB_VFP_ROOT}\build\win64\${HB_COMPILER}\${BuildMode}
+-lhb_vfp
+#The following will force the linking of all functions in hb_vfp module
+${HB_VFP_ROOT}\build\win64\${HB_COMPILER}\${BuildMode}\hb_vfp.hbx
+
+#To include the hb_orm module
+-incpath=${HB_ORM_ROOT}\build\win64\${HB_COMPILER}\${BuildMode}
+
+#Update the path where the HB_ORM package is installed
+-L${HB_ORM_ROOT}\build\win64\${HB_COMPILER}\${BuildMode}
+-lhb_orm
+#The following will force the linking of all functions in hb_orm module
+${HB_ORM_ROOT}\build\win64\${HB_COMPILER}\${BuildMode}\hb_orm.hbx
+#The following are includes used by the HB_ORM
+sddodbc.hbc
+
+#Following is not needed anymore
+#xhb.hbc
+
+-obuild\win64\${HB_COMPILER}\${BuildMode}\${EXEName}.exe
+
+Harbour_LocalSandbox.hbm
+LoadAllHarbourAPI_windows.prg
+
+#Since it is not possible to use a variable in the path of the .hbm, adding in in the BuildEXE.bat / .sh
+#${HB_FASTCGI_ROOT}\hb_fcgi\hb_fcgi_windows.hbm
+#r:\Harbour_FastCGI\hb_fcgi\hb_fcgi_windows.hbm

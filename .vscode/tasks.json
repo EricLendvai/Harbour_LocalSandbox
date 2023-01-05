@@ -1,0 +1,340 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "SwitchOS",
+            "windows": {
+                "command": "${command:remote-containers.reopenInContainer}",
+                "options": {
+                    "statusbar": {"label" : "<Open Container - Go to Ubuntu>","hide" : false}
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            },
+            "linux": {
+                "command": "${command:remote-containers.reopenLocally}",
+                "options": {
+                    "statusbar": {"label" : "<Close Container - Go to Windows>","hide" : false}
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            }
+        },
+        {
+            "label": "RunDebug",
+            "command": "${command:workbench.action.debug.start}",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "statusbar": {"label" : "<Debug>","hide" : false}
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            }
+        },
+        {
+            "label": "CompileDebug",
+            "windows":{
+                "type": "shell",
+                "command": "${workspaceFolder}\\BuildEXE.bat",
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "env": {
+                        "HB_VFP_ROOT":"C:\\Harbour_VFP",
+                        "HB_ORM_ROOT":"C:\\Harbour_ORM",
+                        "HB_FASTCGI_ROOT":"C:\\Harbour_FastCGI",
+                        "EXEName":"Harbour_LocalSandbox",
+                        "BuildMode":"debug",
+//                        "HB_COMPILER":"${input:CCompiler}",
+                        "HB_COMPILER":"mingw64",
+                        "WebsiteDrive":"C:",
+                        "SiteRootFolder":"\\Harbour_websites\\fcgi_Harbour_LocalSandbox\\"
+                    },
+                    "statusbar": {"label" : "<Compile Debug>","hide" : false}
+                },
+                "dependsOrder": "sequence",
+                "dependsOn":["SoftKillFcgiExe"],
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            },
+            "linux":{
+                "type": "shell",
+                "command": "sh ${workspaceFolder}/BuildEXE.sh",
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "env": {
+                        "HB_VFP_ROOT":"/src/Harbour_VFP",
+                        "HB_ORM_ROOT":"/src/Harbour_ORM",
+                        "HB_FASTCGI_ROOT":"/src/Harbour_FastCGI/",
+                        "EXEName":"Harbour_LocalSandbox",
+                        "BuildMode":"debug",
+                        "HB_COMPILER":"gcc",
+                        "WebsiteDrive":"",
+                        "SiteRootFolder":"/var/www/Harbour_websites/fcgi_Harbour_LocalSandbox/"
+                    },
+                    "statusbar": {"label" : "<Compile Debug>","hide" : false}
+                },
+                "dependsOrder": "sequence",
+                "dependsOn":["SoftKillFcgiExe"],
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            }
+        },
+        {
+            "label": "CompileRelease",
+            "windows":{
+                "type": "shell",
+                "command": "${workspaceFolder}\\BuildEXE.bat",
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "env": {
+                        "HB_VFP_ROOT":"C:\\Harbour_VFP",
+                        "HB_ORM_ROOT":"C:\\Harbour_ORM",
+                        "HB_FASTCGI_ROOT":"C:\\Harbour_FastCGI",
+                        "EXEName":"Harbour_LocalSandbox",
+                        "BuildMode":"release",
+                        // "HB_COMPILER":"${input:CCompiler}",
+                        "HB_COMPILER":"mingw64",
+                        "WebsiteDrive":"C:",
+                        "SiteRootFolder":"\\Harbour_websites\\fcgi_Harbour_LocalSandbox\\"
+                    },
+                    "statusbar": {"label" : "<Compile Release>","hide" : false}
+                },
+                "dependsOrder": "sequence",
+                "dependsOn":["SoftKillFcgiExe"],
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            },
+            "linux":{
+                "type": "shell",
+                "command": "sh ${workspaceFolder}/BuildEXE.sh",
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "env": {
+                        "HB_VFP_ROOT":"/src/Harbour_VFP",
+                        "HB_ORM_ROOT":"/src/Harbour_ORM",
+                        "HB_FASTCGI_ROOT":"/src/Harbour_FastCGI",
+                        "EXEName":"Harbour_LocalSandbox",
+                        "BuildMode":"release",
+                        "HB_COMPILER":"gcc",
+                        "WebsiteDrive":"",
+                        "SiteRootFolder":"/var/www/Harbour_websites/fcgi_Harbour_LocalSandbox/"
+                    },
+                    "statusbar": {"label" : "<Compile Release>","hide" : false}
+                },
+                "dependsOrder": "sequence",
+                "dependsOn":["SoftKillFcgiExe"],
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            }
+        },
+        {
+            "label":"KillFcgiExe",
+            "windows":{
+                "type": "shell",
+                "command":"taskkill",
+                "args": ["/IM","FCGIHarbour_LocalSandbox.exe","/f","/t"],
+                "options": {
+                    "statusbar": {"label" : "<Kill Fcgi Exe>","hide" : false}
+                }
+            },
+            "linux":{
+                "type": "shell",
+                "command":"killall",
+                "args": ["FCGIHarbour_LocalSandbox.exe"],
+                "options": {
+                    "statusbar": {"label" : "<Kill Fcgi Exe>","hide" : false}
+                }
+            }
+        },
+        {
+            "label": "DelAllPPO",
+            "windows":{
+                "type": "shell",
+                "command": "del ${workspaceFolder}\\*.ppo",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Del All PPO>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            },
+            "linux":{
+                "type": "shell",
+                "command": "rm ${workspaceFolder}/ *.ppo",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Del All PPO>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            }
+        },
+        {
+            "label": "DelBuildCache",
+            "windows":{
+                "type": "shell",
+                "command": "rd ${workspaceFolder}\\build\\win64\\ /Q /S",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Del Build Caches>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            },
+            "linux":{
+                "type": "shell",
+                "command": "rm -rf ${workspaceFolder}/build/lin64/",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Del Build Caches>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            }
+        },
+        {
+            "label": "Down",
+            "windows":{
+                "type": "shell",
+                "command": "C:\\Harbour_FastCGI\\FCGITaskManagerBin\\FCGITaskManager.exe down http localhost 8164 /fcgi_Harbour_LocalSandbox/ C:/Harbour_websites/fcgi_Harbour_LocalSandbox/ Harbour_LocalSandbox",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Down>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            },
+            "linux":{
+                "type": "shell",
+                "command": "/var/www/Harbour_FastCGI/FCGITaskManagerBin/FCGITaskManager.exe down http localhost 80 /fcgi_Harbour_LocalSandbox/ /var/www/Harbour_websites/fcgi_Harbour_LocalSandbox/ Harbour_LocalSandbox",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Down>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            }
+        },
+        {
+            "label": "ActivateHarbour_LocalSandbox",
+            "windows":{
+                "type": "shell",
+                "command": "C:\\Harbour_FastCGI\\FCGITaskManagerBin\\FCGITaskManager.exe activate http localhost 8164 /fcgi_Harbour_LocalSandbox/ C:/Harbour_websites/fcgi_Harbour_LocalSandbox/ Harbour_LocalSandbox",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Activate Harbour_LocalSandbox>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            },
+            "linux":{
+                "type": "shell",
+                "command": "/opt/Harbour_FastCGI/FCGITaskManagerBin/FCGITaskManager.exe activate http localhost 80 /fcgi_Harbour_LocalSandbox/ /opt/Harbour_websites/fcgi_Harbour_LocalSandbox/ Harbour_LocalSandbox",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Activate Harbour_LocalSandbox>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            }
+        },
+        {
+            "label": "KillHarbour_LocalSandbox",
+            "windows":{
+                "type": "shell",
+                "command": "C:\\Harbour_FastCGI\\FCGITaskManagerBin\\FCGITaskManager.exe kill http localhost 8164 /fcgi_Harbour_LocalSandbox/ C:/Harbour_websites/fcgi_Harbour_LocalSandbox/ Harbour_LocalSandbox",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Kill Harbour_LocalSandbox>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            },
+            "linux":{
+                "type": "shell",
+                "command": "/var/www/Harbour_FastCGI/FCGITaskManagerBin/FCGITaskManager.exe kill http localhost 80 /fcgi_Harbour_LocalSandbox/ /var/www/Harbour_websites/fcgi_Harbour_LocalSandbox/ Harbour_LocalSandbox",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Kill Harbour_LocalSandbox>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            }
+        },
+        {
+            "label": "BrowseHarbour_LocalSandbox",
+            "windows":{
+                "type": "shell",
+                "command": "firefox.exe http://localhost:8164/fcgi_Harbour_LocalSandbox/",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Browse Harbour_LocalSandbox>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            },
+            "linux":{
+                "type": "shell",
+                "command": "firefox http://Harbour_LocalSandbox/",
+                "isBackground": true,
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "statusbar": {"label" : "<Browse Harbour_LocalSandbox>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "CCompiler",
+            "type": "pickString",
+            "description": "Select C Compiler",
+            "options": ["mingw64","msvc64"],
+            "default": "mingw64"
+        }
+    ]
+}
