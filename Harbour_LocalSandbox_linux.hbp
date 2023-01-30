@@ -36,6 +36,7 @@ sddodbc.hbc
 #Following is not needed anymore
 #xhb.hbc
 
+hbunix.hbc
 
 -obuild/lin64/${HB_COMPILER}/${BuildMode}/${EXEName}.exe
 
