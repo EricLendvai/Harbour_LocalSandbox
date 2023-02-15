@@ -1,5 +1,8 @@
 # Harbour_LocalSandbox - Change Log
 
+## 02/15/2023 v 1.03
+* Simplified linking of libraries hb_vfp and hb_orm. Update those related libraries.
+
 ## 02/10/2023 v 1.02
 * Fixed make files to handle updated Harbour_VFP.
 

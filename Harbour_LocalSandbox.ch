@@ -3,6 +3,6 @@
 #include "hb_vfp.ch"
 #include "dbinfo.ch"
 
-#define BUILDVERSION "1.02"
+#define BUILDVERSION "1.03"
 
 memvar v_hPP

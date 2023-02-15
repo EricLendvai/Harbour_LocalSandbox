@@ -3,7 +3,7 @@
 
 //The following will load all the harbour internal functions.
 #include "harbour.hbx"
-#include "hbunix.hbx"
+// #include "hbunix.hbx"
 
 
 //List contrib libraries and all of their objects to be linked. You must also update the LocalSandbox.hbp to add the related .hbc files
@@ -13,6 +13,6 @@
 #include "/usr/local/share/harbour/contrib/hbct/hbct.hbx"
 #include "/usr/local/share/harbour/contrib/hbmisc/hbmisc.hbx"
 
-#include "hb_vfp_linux.hbx"
-#include "hb_orm_linux.hbx"
+// #include "hb_vfp_linux.hbx"
+// #include "hb_orm_linux.hbx"
 
