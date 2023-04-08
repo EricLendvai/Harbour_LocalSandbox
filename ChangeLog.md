@@ -1,5 +1,8 @@
 # Harbour_LocalSandbox - Change Log
 
+## 04/08/2023 v 1.03
+* Changed Dockerfile of devcontainer to work around git install failure introduced around April 2023.
+
 ## 02/15/2023 v 1.03
 * Simplified linking of libraries hb_vfp and hb_orm. Update those related libraries.
 
