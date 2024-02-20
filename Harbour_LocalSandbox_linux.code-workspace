@@ -12,7 +12,7 @@
         "harbour.compilerExecutable": "/usr/local/bin/harbour",
         "harbour.extraOptions": "-i/usr/local/include/harbour/",
         "harbour.extraIncludePaths":["/usr/local/include/harbour/",
-                                     "/src/Harbour_VFP/",
+                                     "/src/Harbour_EL/",
                                      "/src/Harbour_ORM/",
                                      "/src/Harbour_FastCGI/hb_fcgi/"],
         "harbour.warningLevel":1,

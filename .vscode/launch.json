@@ -11,11 +11,11 @@
             // "preLaunchTask": "CompileDebug",
             // "postDebugTask": "",
             "windows":{
-                "program": "C:\\Harbour_websites\\fcgi_Harbour_LocalSandbox\\backend\\FCGIHarbour_LocalSandbox.exe",
+                "program": "R:\\Harbour_websites\\fcgi_Harbour_LocalSandbox\\backend\\FCGIHarbour_LocalSandbox.exe",
                 "sourcePaths": [
                     "${workspaceFolder}",
-                    "C:\\Harbour_ORM\\",
-                    "C:\\Harbour_VFP\\"
+                    "R:\\Harbour_ORM\\",
+                    "R:\\Harbour_EL\\"
                 ]
             },
             "linux":{
@@ -23,7 +23,7 @@
                 "sourcePaths": [
                     "${workspaceFolder}",
                     "/src/Harbour_ORM/",
-                    "/src/Harbour_VFP/"
+                    "/src/Harbour_EL/"
                 ]
             }
         }

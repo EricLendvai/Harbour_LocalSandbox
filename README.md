@@ -1,6 +1,6 @@
 # Harbour_LocalSandbox
 The Harbour_LocalSandbox is used to test/learn Harbour.   
-This version also includes the Harbour_VFP and Harbour_ORM libraries
+This version also includes the Harbour_EL and Harbour_ORM libraries
 
 View [ChangeLog.md](ChangeLog.md) for list of enhancements and fixes.
 

@@ -12,5 +12,8 @@
 #include "C:\harbour\contrib\hbct\hbct.hbx"
 #include "C:\harbour\contrib\hbmisc\hbmisc.hbx"
 
-// #include "hb_vfp_windows.hbx"
+//On possible in Patched version of Harbour
+#include "C:\harbour\contrib\hbcrypto\hbcrypto.hbx"
+
+// #include "hb_el_windows.hbx"
 // #include "hb_orm_windows.hbx"

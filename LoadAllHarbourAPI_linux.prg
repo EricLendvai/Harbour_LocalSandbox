@@ -13,6 +13,6 @@
 #include "/usr/local/share/harbour/contrib/hbct/hbct.hbx"
 #include "/usr/local/share/harbour/contrib/hbmisc/hbmisc.hbx"
 
-// #include "hb_vfp_linux.hbx"
+// #include "hb_el_linux.hbx"
 // #include "hb_orm_linux.hbx"
 

@@ -44,18 +44,18 @@ RUN ldconfig
 # RUN mkdir /src
 # WORKDIR /src
 # RUN git clone https://github.com/EricLendvai/Harbour_FastCGI/
-# RUN git clone https://github.com/EricLendvai/Harbour_VFP/
+# RUN git clone https://github.com/EricLendvai/Harbour_EL/
 # RUN git clone https://github.com/EricLendvai/Harbour_ORM/
 
 # ENV BuildMode release
 # ENV HB_COMPILER gcc
-# ENV HB_VFP_ROOT /src/Harbour_VFP/
+# ENV HB_EL_ROOT /src/Harbour_EL/
 # ENV HB_ORM_ROOT /src/Harbour_ORM/
 # ENV HB_FASTCGI_ROOT /src/Harbour_FastCGI/
 
-# WORKDIR /src/Harbour_VFP
+# WORKDIR /src/Harbour_EL
 # RUN chmod +x ./BuildLIB.sh
-# ENV LIBName hb_vfp
+# ENV LIBName hb_el
 # RUN ./BuildLIB.sh
 
 # WORKDIR /src/Harbour_ORM
@@ -66,9 +66,9 @@ RUN ldconfig
 # #also build debug libraries
 # ENV BuildMode debug
 
-# WORKDIR /src/Harbour_VFP
+# WORKDIR /src/Harbour_EL
 # RUN chmod +x ./BuildLIB.sh
-# ENV LIBName hb_vfp
+# ENV LIBName hb_el
 # RUN ./BuildLIB.sh
 
 # WORKDIR /src/Harbour_ORM

@@ -29,7 +29,8 @@ goto End
 rem The following command most likely will do nothing if the SoftKill task was called first.
 taskkill /IM FCGI%EXEName%.exe /f /t 2>nul
 
-if %HB_COMPILER% == msvc64 call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64
+rem if %HB_COMPILER% == msvc64 call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64
+if %HB_COMPILER% == msvc64 call "%ProgramFiles%\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64
 
 if %HB_COMPILER% == mingw64 set PATH=C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;%PATH%
 
@@ -64,7 +65,7 @@ if exist build\win64\%HB_COMPILER%\%BuildMode%\%EXEName%.exe (
 ::  /gc3      = Pure C code with no HVM
 ::  /p        = Leave generated ppo files
 
-echo %HB_VFP_ROOT%\build\win64\%HB_COMPILER%\%BuildMode%\ >include_paths.txt
+echo %HB_EL_ROOT%\build\win64\%HB_COMPILER%\%BuildMode%\ >include_paths.txt
 echo %HB_ORM_ROOT%\build\win64\%HB_COMPILER%\%BuildMode%\ >>include_paths.txt
 
 if %BuildMode% == debug (

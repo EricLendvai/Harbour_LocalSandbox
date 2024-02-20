@@ -24,7 +24,9 @@ hb_cdpSelect("UTF8EX")
 // oFcgi := hb_Fcgi():New()
 oFcgi := MyFcgi():New()    // Used a subclass of hb_Fcgi
 do while oFcgi:Wait()
-    oFcgi:OnRequest()
+    if !oFcgi:SkipRequest
+        oFcgi:OnRequest()
+    endif
 enddo
 
 SendToDebugView("Done")
@@ -82,7 +84,7 @@ else
     endfor
 endif
 
-//__pp_path( v_hPP, "R:\Harbour_VFP\build\win64\mingw64\release" )
+//__pp_path( v_hPP, "R:\Harbour_EL\build\win64\mingw64\release" )
 
 
 
@@ -110,7 +112,7 @@ __pp_addRule( v_hPP, "#xcommand ENDDO => END" )
 __pp_addRule( v_hPP, "#xcommand ? [<explist,...>] => FcgiLogger( 2[,<explist>] )" )
 __pp_addRule( v_hPP, "#xcommand ?? [<explist,...>] => FcgiLogger( 3[,<explist>] )" )
 
-// vfp_StrToFile(par_cExpression,par_cFileName,par_lAdditive)   //Partial implementation of VFP9's strtran(). The 3rd parameter only supports a logical
+// el_StrToFile(par_cExpression,par_cFileName,par_lAdditive)   //Partial implementation of VFP9's strtran(). The 3rd parameter only supports a logical
 
 return nil 
 
@@ -135,7 +137,7 @@ cHtml += [<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">]
 
 cHtml += [<meta http-equiv="X-UA-Compatible" content="IE=edge" />]
 cHtml += [<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >]
-cHtml += [<title>Local Harbour Sandbox (With hb_vfp and hb_orm)</title>]
+cHtml += [<title>Local Harbour Sandbox (With hb_el and hb_orm)</title>]
 
 // The following 4 lines was when not using jQuery UI.
 // cHtml += [<script language="javascript" type="text/javascript" src="scripts/jQuery_1_11_3/jquery.js"></script>]
@@ -842,7 +844,7 @@ TEXT TO VAR cHtml
     <nav class="navbar navbar-default bg-secondary">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand text-white" href="home">Local Harbour Sandbox (With hb_vfp and hb_orm)</a>
+                <a class="navbar-brand text-white" href="home">Local Harbour Sandbox (With hb_el and hb_orm)</a>
             </div>
         </div>
     </nav>
