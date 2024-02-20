@@ -11,11 +11,11 @@
             // "preLaunchTask": "CompileDebug",
             // "postDebugTask": "",
             "windows":{
-                "program": "R:\\Harbour_websites\\fcgi_Harbour_LocalSandbox\\backend\\FCGIHarbour_LocalSandbox.exe",
+                "program": "C:\\Harbour_websites\\fcgi_Harbour_LocalSandbox\\backend\\FCGIHarbour_LocalSandbox.exe",
                 "sourcePaths": [
                     "${workspaceFolder}",
-                    "R:\\Harbour_ORM\\",
-                    "R:\\Harbour_EL\\"
+                    "C:\\Harbour_ORM\\",
+                    "C:\\Harbour_EL\\"
                 ]
             },
             "linux":{
